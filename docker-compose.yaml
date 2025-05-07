@@ -1,0 +1,21 @@
+services:
+  mosquitto:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mosquitto-broker
+    ports:
+      - "1883:1883"  # MQTT port
+      - "9001:9001"  # WebSocket port
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+      - ./passwd_file:/mosquitto/passwd_file:rw
+    restart: unless-stopped
+    networks:
+      - mosquitto-net
+
+networks:
+  mosquitto-net:
+    driver: bridge
