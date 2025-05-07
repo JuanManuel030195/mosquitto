@@ -1,0 +1,17 @@
+# Ignore log files
+log/
+
+# Ignore data files
+data/
+
+# Ignore Docker-related files
+*.db
+*.log
+
+# Ignore sensitive files
+passwd_file
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
